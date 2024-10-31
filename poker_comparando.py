@@ -4,7 +4,8 @@
 #Copas__C 0.2
 #Ouros__O 0.1
 #EXEMPLO DE FORMATAÇÃO DE MAO A SER SEGUIDO:["AC", "05P", "10C", "07O", "03E"]
-
+mao1=["AC", "06O", "06C", "06O", "03E"]
+mao2=["2C", "05P", "10C", "07O", "03E"]
 def naipe(carta):
   return carta[-1]
 #funcao para o valor da carta, letras viram numeros
@@ -201,16 +202,21 @@ def comparar(mao1, mao2):
   pontos1=graduacao(mao1)
   pontos2=graduacao(mao2)
   if pontos1==pontos2:
-    if pontos1==10:
-      pontos1+=grnipe(mao1[0])
-      pontos2+=grnipe(mao2[0])
+    
     if pontos1==9:  
+      a1=[]
+      b2=[]
       for carta in mao1:
-        pontos1+=valor(carta)
+        a1.append(valor(carta))
       for carta in mao2:
-        pontos2+=valor(carta)
-      pontos2+=grnipe(mao2[0])
-      pontos1+=grnipe(mao1[0])
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      for x in len(mao1)[1:]:
+        if a1[-x]>b2[-x]:
+            return(mao1)
+        if a1[-x]<b2[-x]:
+            return(mao2)
     if pontos1==8:
       a1=[]
       b2=[]
@@ -225,14 +231,111 @@ def comparar(mao1, mao2):
       if a1[1]<b2[1]:
         return(mao2)
     if pontos1==7:
-      
-      
+      a1=[]
+      b2=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      if a1[2]>b2[2]:
+        return(mao1)
+      if a1[2]<b2[2]:
+        return(mao2) 
+    if pontos1==6:
+      a1=[]
+      b2=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      for x in len(mao1)[1:]:
+        if a1[-x]>b2[-x]:
+            return(mao1)
+        if a1[-x]<b2[-x]:
+            return(mao2)
+    if pontos1==5:
+      a1=[]
+      b2=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      if a1[-1]>b2[-1]:
+        return(mao1)
+      if a1[-1]<b2[-1]:
+        return(mao2)
+    if pontos1==4:
+      a1=[]
+      b2=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      if a1[2]>b2[2]:
+        return(mao1)
+      if a1[2]<b2[2]:
+        return(mao2)
+    if pontos1==3:
+      a1=[]
+      b2=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      if a1[3]>b2[3]:
+        return(mao1)
+      if a1[3]<b2[3]:
+        return(mao2)
+    if pontos1==2:
+      a1=[]
+      b2=[]
+      a2=[]
+      b1=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      for x in range(4):
+        if a1[x]==a1[x+1]:
+          a2.append(a1[x])
+        if b2[x]==b2[x+1]:
+          b1.append(b2[x])
+      if a2[0]>b1[0]:
+        return(mao1)
+      if a2[0]<b1[0]:
+        return(mao2)
+    if pontos1==1:
+      a1=[]
+      b2=[]
+      for carta in mao1:
+        a1.append(valor(carta))
+      for carta in mao2:
+        b2.append(valor(carta))
+      a1=sorted(a1)
+      b2=sorted(b2)
+      if a1[-1]>b2[-1]:
+        return(mao1)
+      if a1[-1]<b2[-1]:
+        return(mao2)
 
   elif pontos1>pontos2:
     return(mao1)
   elif pontos1<pontos2:
     return(mao2)
 
+print(comparar(mao1, mao2))
     
   
   
